@@ -1,0 +1,26 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Minha Coleção{% endblock %}</title>
+    <!-- Carregando o nosso CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+
+    <!-- Incluindo o Cabeçalho -->
+    {% include 'fragments/header.html' %}
+
+    <!-- Onde o conteúdo de cada página vai aparecer -->
+    <main>
+        {% block content %}
+        {% endblock content %}
+    </main>
+
+    <!-- Incluindo o Rodapé -->
+    {% include 'fragments/footer.html' %}
+
+</body>
+</html>

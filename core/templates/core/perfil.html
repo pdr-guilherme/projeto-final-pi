@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% block title %}Meu Perfil | Wax&Tracks{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Meu Perfil</h1>
+    
+    <div class="detail-header" style="align-items: center;">
+        <div class="detail-cover" style="width: 150px; height: 150px; border-radius: 50%;"></div>
+        <div class="detail-info">
+            <h1>@usuario123</h1>
+            <h2>País: Brasil</h2>
+            <p><strong>Bio:</strong> Colecionadora apaixonada por MPB, Pop Latino e clássicos do rock.</p>
+        </div>
+    </div>
+
+    <h2>Últimas Atividades</h2>
+    <table class="table-list">
+        <tr>
+            <td>Adicionou <strong>Falso Brilhante</strong> à coleção</td>
+            <td style="text-align: right;">Hoje</td>
+        </tr>
+        <tr>
+            <td>Avaliou <strong>Amor a la Mexicana</strong> (Nota: 4/5)</td>
+            <td style="text-align: right;">Ontem</td>
+        </tr>
+    </table>
+{% endblock %}

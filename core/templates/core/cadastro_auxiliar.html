@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+{% block title %}Cadastros Auxiliares | Wax&Tracks{% endblock %}
+
+{% block content %}
+    <h1 class="page-title" style="text-align: center;">Cadastros Auxiliares</h1>
+    <p style="text-align: center; margin-bottom: 3rem;">Adicione os dados base antes de cadastrar um novo Lançamento.</p>
+    
+    <div class="aux-forms-grid">
+        <!-- Card Artista -->
+        <div class="form-container" style="margin: 0; max-width: 100%;">
+            <h2 style="margin-bottom: 1rem; font-family: 'Inter'; font-size: 1.2rem;">Novo Artista</h2>
+            <form action="#">
+                <div class="form-group">
+                    <label>Nome do Artista/Banda</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>País</label>
+                    <input type="text">
+                </div>
+                <button type="button" class="btn-primary">Salvar Artista</button>
+            </form>
+        </div>
+
+        <!-- Card Gravadora -->
+        <div class="form-container" style="margin: 0; max-width: 100%;">
+            <h2 style="margin-bottom: 1rem; font-family: 'Inter'; font-size: 1.2rem;">Nova Gravadora</h2>
+            <form action="#">
+                <div class="form-group">
+                    <label>Nome da Gravadora</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Ano de Fundação</label>
+                    <input type="number">
+                </div>
+                <button type="button" class="btn-primary">Salvar Gravadora</button>
+            </form>
+        </div>
+
+        <!-- Card Gênero -->
+        <div class="form-container" style="margin: 0; max-width: 100%;">
+            <h2 style="margin-bottom: 1rem; font-family: 'Inter'; font-size: 1.2rem;">Novo Gênero</h2>
+            <form action="#">
+                <div class="form-group">
+                    <label>Nome do Gênero</label>
+                    <input type="text" placeholder="Ex: Bossa Nova">
+                </div>
+                <button type="button" class="btn-primary">Salvar Gênero</button>
+            </form>
+        </div>
+    </div>
+{% endblock %}

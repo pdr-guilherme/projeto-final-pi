@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block title %}Entrar | Wax&Tracks{% endblock %}
+
+{% block content %}
+    <div style="display: flex; justify-content: center; align-items: center; min-height: 60vh;">
+        <div class="form-container" style="width: 100%; max-width: 400px;">
+            <h1 class="page-title" style="text-align: center; margin-bottom: 2rem;">Acesse sua Coleção</h1>
+            
+            <form action="#">
+                <div class="form-group">
+                    <label>Usuário</label>
+                    <input type="text">
+                </div>
+                <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password">
+                </div>
+                <button type="button" class="btn-primary">Entrar</button>
+                
+                <p style="text-align: center; margin-top: 1rem; font-size: 0.9rem;">
+                    Ainda não tem conta? <a href="#" style="color: var(--accent-color);">Cadastre-se</a>
+                </p>
+            </form>
+        </div>
+    </div>
+{% endblock %}

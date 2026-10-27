@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+{% block title %}Novo Lançamento | Wax&Tracks{% endblock %}
+
+{% block content %}
+    <h1 class="page-title" style="text-align: center;">Cadastrar Disco</h1>
+    
+    <div class="form-container">
+        <form action="#" method="POST">
+            <div class="form-group">
+                <label for="titulo">Título do Lançamento</label>
+                <input type="text" id="titulo" placeholder="Ex: Falso Brilhante">
+            </div>
+            
+            <div class="form-group">
+                <label for="tipo">Tipo</label>
+                <select id="tipo">
+                    <option>Álbum</option>
+                    <option>EP</option>
+                    <option>Single</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="data">Data de Lançamento</label>
+                <input type="date" id="data">
+            </div>
+
+            <!-- Botão Fictício -->
+            <button type="button" class="btn-primary">Salvar Lançamento</button>
+        </form>
+    </div>
+{% endblock %}
