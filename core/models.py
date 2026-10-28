@@ -1,4 +1,4 @@
-from django.contrib.auth.models import User
+from django.conf import settings
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
@@ -138,26 +138,26 @@ class Faixa(models.Model):
 
 # PerfilUsuario
 # TODO:
-# - adicionar related_name="perfil" no OneToOne (acesso: user.perfil) (3)
 # - criar o perfil automaticamente no cadastro do usuário (na view ou via
 #   signal post_save), senão request.user.perfil levanta RelatedObjectDoesNotExist (3)
-# - trocar null=True por só blank=True em bio e pais (3)
-# - usar settings.AUTH_USER_MODEL em vez de importar User direto (4)
-# - simplificar ordering (usuario__username força JOIN) (4)
+#   - https://docs.djangoproject.com/en/6.1/ref/signals/
 # - trocar pais por django-countries (5)
 # - adicionar avatar (5)
 class PerfilUsuario(models.Model):
     usuario = models.OneToOneField(
-        User, verbose_name=_("usuário"), on_delete=models.CASCADE
+        settings.AUTH_USER_MODEL,
+        verbose_name=_("usuário"),
+        on_delete=models.CASCADE,
+        related_name="perfil",
     )
-    bio = models.TextField(_("biografia"), blank=True, null=True)
-    pais = models.CharField(_("país"), max_length=100, null=True, blank=True)
+    bio = models.TextField(_("biografia"), blank=True)
+    pais = models.CharField(_("país"), max_length=100, blank=True)
 
     class Meta:
         verbose_name = _("perfil de usuário")
         verbose_name_plural = _("perfis de usuários")
         db_table = "perfis"
-        ordering = ("usuario__username",)
+        ordering = ("id",)
 
     def __str__(self):
         return self.usuario.username
