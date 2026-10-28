@@ -21,7 +21,6 @@ class Artista(models.Model):
     class Meta:
         verbose_name = _("artista")
         verbose_name_plural = _("artistas")
-        db_table = "artistas"
         ordering = ("nome",)
 
     def __str__(self):
@@ -43,7 +42,6 @@ class Gravadora(models.Model):
     class Meta:
         verbose_name = _("gravadora")
         verbose_name_plural = _("gravadoras")
-        db_table = "gravadoras"
         ordering = ("nome",)
 
     def __str__(self):
@@ -58,7 +56,6 @@ class Genero(models.Model):
     class Meta:
         verbose_name = _("gênero")
         verbose_name_plural = _("gêneros")
-        db_table = "generos"
         ordering = ("nome",)
 
     def __str__(self):
@@ -103,7 +100,6 @@ class Lancamento(models.Model):
     class Meta:
         verbose_name = _("lançamento")
         verbose_name_plural = _("lançamentos")
-        db_table = "lancamentos"
         ordering = ("titulo", "data_lancamento")
 
     def __str__(self):
@@ -129,7 +125,6 @@ class Faixa(models.Model):
     class Meta:
         verbose_name = _("faixa")
         verbose_name_plural = _("faixas")
-        db_table = "faixas"
         ordering = ("lancamento__titulo", "numero", "titulo")
 
     def __str__(self):
@@ -156,7 +151,6 @@ class PerfilUsuario(models.Model):
     class Meta:
         verbose_name = _("perfil de usuário")
         verbose_name_plural = _("perfis de usuários")
-        db_table = "perfis"
         ordering = ("id",)
 
     def __str__(self):
