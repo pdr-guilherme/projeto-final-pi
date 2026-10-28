@@ -124,4 +124,4 @@ class PerfilUsuario(models.Model):
         ordering = ("usuario__username",)
 
     def __str__(self):
-        return self.titulo
+        return self.usuario.username
