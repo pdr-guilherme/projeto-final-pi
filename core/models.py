@@ -3,8 +3,11 @@ from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
-# TODO: usar biblioteca de paises nesses modelos (https://github.com/SmileyChris/django-countries)
-# TODO: adicionar foto a esse modelo
+# TODO:
+# - trocar null=True por só blank=True em bio (evita dois valores pra "vazio") (3)
+# - validators em ano_formacao (ex.: mínimo 1900, máximo o ano atual) (4)
+# - trocar pais por django-countries (5)
+# - adicionar foto (5)
 class Artista(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
     pais = models.CharField(_("país"), max_length=100)
@@ -25,6 +28,9 @@ class Artista(models.Model):
         return self.nome
 
 
+# TODO:
+# - validators em ano_formacao (4)
+# - trocar pais por django-countries (5)
 class Gravadora(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
     pais = models.CharField(_("país"), max_length=100)
@@ -44,6 +50,8 @@ class Gravadora(models.Model):
         return self.nome
 
 
+# TODO:
+# - nome com unique=True (hoje dá pra cadastrar dois "Pós-punk") (2)
 class Genero(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
 
@@ -57,7 +65,21 @@ class Genero(models.Model):
         return self.nome
 
 
-# TODO: adicionar imagem de capa
+# TODO:
+# - adicionar ManyToManyField para artistas (related_name="lancamentos") (1)
+# - adicionar ManyToManyField para generos (blank=True) (1)
+# - renomear tipo para formato (o campo guarda um Formato, não um tipo);
+#   atualizar admin, filtros e script de popular junto (1)
+# - decidir se o acervo é de cada usuário; se for, criar model ItemAcervo
+#   (usuario, lancamento, adquirido_em, observacoes) com UniqueConstraint
+#   em (usuario, lancamento) (2)
+# - se quiser suportar coletâneas, mover artistas pra Faixa em vez do Lancamento (4)
+# - adicionar atualizado_em (DateTimeField(auto_now=True)) (5)
+# - data_lancamento obrigatória não serve pra disco só com ano conhecido;
+#   considerar ano_lancamento (perde o date_hierarchy do admin) (5)
+# - mesmo álbum em vinil e CD vira dois Lancamento com faixas duplicadas;
+#   separar "obra" de "versão" (como o Discogs) é a solução (5)
+# - adicionar imagem de capa (5)
 class Lancamento(models.Model):
     class Formato(models.TextChoices):
         VINIL = "vinil", _("Vinil")
@@ -88,6 +110,11 @@ class Lancamento(models.Model):
         return self.titulo
 
 
+# TODO:
+# - UniqueConstraint em (lancamento, numero) pra impedir duas faixas com o mesmo
+#   número no mesmo lançamento (2)
+# - validator em duracao pra não aceitar valor negativo (4)
+# - simplificar ordering para ("lancamento", "numero") (evita JOIN por título) (4)
 class Faixa(models.Model):
     titulo = models.CharField(_("título"), max_length=255)
     numero = models.PositiveSmallIntegerField(_("número"))
@@ -109,7 +136,16 @@ class Faixa(models.Model):
         return self.titulo
 
 
-# TODO: adicionar campo de avatar
+# PerfilUsuario
+# TODO:
+# - adicionar related_name="perfil" no OneToOne (acesso: user.perfil) (3)
+# - criar o perfil automaticamente no cadastro do usuário (na view ou via
+#   signal post_save), senão request.user.perfil levanta RelatedObjectDoesNotExist (3)
+# - trocar null=True por só blank=True em bio e pais (3)
+# - usar settings.AUTH_USER_MODEL em vez de importar User direto (4)
+# - simplificar ordering (usuario__username força JOIN) (4)
+# - trocar pais por django-countries (5)
+# - adicionar avatar (5)
 class PerfilUsuario(models.Model):
     usuario = models.OneToOneField(
         User, verbose_name=_("usuário"), on_delete=models.CASCADE
