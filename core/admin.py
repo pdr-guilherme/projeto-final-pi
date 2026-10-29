@@ -37,7 +37,7 @@ class LancamentoAdmin(admin.ModelAdmin):
     list_display = (
         "id",
         "titulo",
-        "tipo",
+        "formato",
         "data_lancamento",
         "gravadora",
         "total_faixas",
@@ -46,7 +46,7 @@ class LancamentoAdmin(admin.ModelAdmin):
         "titulo",
         "gravadora__nome",
     )
-    list_filter = ("tipo", "gravadora", "data_lancamento")
+    list_filter = ("formato", "gravadora", "data_lancamento")
     date_hierarchy = "data_lancamento"
     list_select_related = ("gravadora",)  # busca as gravadoras de uma vez só
     autocomplete_fields = ("gravadora",)
@@ -64,7 +64,7 @@ class LancamentoAdmin(admin.ModelAdmin):
 class FaixaAdmin(admin.ModelAdmin):
     list_display = ("id", "titulo", "numero", "lancamento", "duracao_formatada")
     search_fields = ("titulo", "lancamento__titulo")
-    list_filter = ("lancamento__tipo",)
+    list_filter = ("lancamento__formato",)
     list_select_related = ("lancamento",)
     autocomplete_fields = ("lancamento",)
 

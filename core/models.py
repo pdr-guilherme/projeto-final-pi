@@ -63,7 +63,6 @@ class Genero(models.Model):
 
 
 # TODO:
-# - renomear tipo para formato (o campo guarda um Formato, não um tipo);
 #   atualizar admin, filtros e script de popular junto (1)
 # - decidir se o acervo é de cada usuário; se for, criar model ItemAcervo
 #   (usuario, lancamento, adquirido_em, observacoes) com UniqueConstraint
@@ -85,7 +84,7 @@ class Lancamento(models.Model):
         OUTRO = "outro", _("Outro")
 
     titulo = models.CharField(_("título"), max_length=255)
-    tipo = models.CharField(_("tipo"), max_length=20, choices=Formato.choices)
+    formato = models.CharField(_("formato"), max_length=20, choices=Formato.choices)
     data_lancamento = models.DateField(_("data de lançamento"))
     gravadora = models.ForeignKey(
         Gravadora,
