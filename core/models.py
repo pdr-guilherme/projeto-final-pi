@@ -1,10 +1,12 @@
+from datetime import timedelta
+
 from django.conf import settings
+from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
 
 # TODO:
-# - validators em ano_formacao (ex.: mínimo 1900, máximo o ano atual) (4)
 # - trocar pais por django-countries (5)
 # - adicionar foto (5)
 class Artista(models.Model):
@@ -14,6 +16,7 @@ class Artista(models.Model):
         _("ano de formação"),
         null=True,
         blank=True,
+        validators=[MinValueValidator(1800)],
     )
     bio = models.TextField(_("biografia"), blank=True)
 
@@ -27,7 +30,6 @@ class Artista(models.Model):
 
 
 # TODO:
-# - validators em ano_formacao (4)
 # - trocar pais por django-countries (5)
 class Gravadora(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
@@ -36,6 +38,7 @@ class Gravadora(models.Model):
         _("ano de formação"),
         null=True,
         blank=True,
+        validators=[MinValueValidator(1800)],
     )
 
     class Meta:
@@ -110,12 +113,15 @@ class Lancamento(models.Model):
         return self.titulo
 
 
-# TODO:
-# - validator em duracao pra não aceitar valor negativo (4)
 class Faixa(models.Model):
     titulo = models.CharField(_("título"), max_length=255)
     numero = models.PositiveSmallIntegerField(_("número"))
-    duracao = models.DurationField(_("duração"), null=True, blank=True)
+    duracao = models.DurationField(
+        _("duração"),
+        null=True,
+        blank=True,
+        validators=[MinValueValidator(timedelta(seconds=1))],
+    )
     lancamento = models.ForeignKey(
         Lancamento,
         verbose_name=_("lançamento"),
