@@ -60,8 +60,6 @@ class Genero(models.Model):
 
 
 # TODO:
-# - adicionar ManyToManyField para artistas (related_name="lancamentos") (1)
-# - adicionar ManyToManyField para generos (blank=True) (1)
 # - renomear tipo para formato (o campo guarda um Formato, não um tipo);
 #   atualizar admin, filtros e script de popular junto (1)
 # - decidir se o acervo é de cada usuário; se for, criar model ItemAcervo
@@ -93,6 +91,15 @@ class Lancamento(models.Model):
         related_name="lancamentos",
     )
     criado_em = models.DateTimeField(_("criado em"), auto_now_add=True)
+    artistas = models.ManyToManyField(
+        Artista, verbose_name=_("artistas"), related_name="lancamentos"
+    )
+    generos = models.ManyToManyField(
+        Genero,
+        verbose_name=_("gêneros"),
+        related_name="lancamentos",
+        blank=True,
+    )
 
     class Meta:
         verbose_name = _("lançamento")
