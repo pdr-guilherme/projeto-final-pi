@@ -4,7 +4,6 @@ from django.utils.translation import gettext_lazy as _
 
 
 # TODO:
-# - trocar null=True por só blank=True em bio (evita dois valores pra "vazio") (3)
 # - validators em ano_formacao (ex.: mínimo 1900, máximo o ano atual) (4)
 # - trocar pais por django-countries (5)
 # - adicionar foto (5)
@@ -16,7 +15,7 @@ class Artista(models.Model):
         null=True,
         blank=True,
     )
-    bio = models.TextField(_("biografia"), null=True, blank=True)
+    bio = models.TextField(_("biografia"), blank=True)
 
     class Meta:
         verbose_name = _("artista")
