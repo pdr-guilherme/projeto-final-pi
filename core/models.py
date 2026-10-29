@@ -104,10 +104,7 @@ class Lancamento(models.Model):
 
 
 # TODO:
-# - UniqueConstraint em (lancamento, numero) pra impedir duas faixas com o mesmo
-#   número no mesmo lançamento (2)
 # - validator em duracao pra não aceitar valor negativo (4)
-# - simplificar ordering para ("lancamento", "numero") (evita JOIN por título) (4)
 class Faixa(models.Model):
     titulo = models.CharField(_("título"), max_length=255)
     numero = models.PositiveSmallIntegerField(_("número"))
@@ -122,7 +119,13 @@ class Faixa(models.Model):
     class Meta:
         verbose_name = _("faixa")
         verbose_name_plural = _("faixas")
-        ordering = ("lancamento__titulo", "numero", "titulo")
+        ordering = ("lancamento_id", "numero", "titulo")
+        constraints = [
+            models.UniqueConstraint(
+                fields=["lancamento", "numero"],
+                name="unique_lancamento_numero",
+            )
+        ]
 
     def __str__(self):
         return self.titulo
