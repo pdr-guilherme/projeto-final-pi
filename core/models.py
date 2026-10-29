@@ -68,9 +68,6 @@ class Genero(models.Model):
 #   (usuario, lancamento, adquirido_em, observacoes) com UniqueConstraint
 #   em (usuario, lancamento) (2)
 # - se quiser suportar coletâneas, mover artistas pra Faixa em vez do Lancamento (4)
-# - adicionar atualizado_em (DateTimeField(auto_now=True)) (5)
-# - data_lancamento obrigatória não serve pra disco só com ano conhecido;
-#   considerar ano_lancamento (perde o date_hierarchy do admin) (5)
 # - mesmo álbum em vinil e CD vira dois Lancamento com faixas duplicadas;
 #   separar "obra" de "versão" (como o Discogs) é a solução (5)
 # - adicionar imagem de capa (5)
@@ -93,6 +90,7 @@ class Lancamento(models.Model):
         related_name="lancamentos",
     )
     criado_em = models.DateTimeField(_("criado em"), auto_now_add=True)
+    editado_em = models.DateTimeField(_("editado em"), auto_now=True)
     artistas = models.ManyToManyField(
         Artista, verbose_name=_("artistas"), related_name="lancamentos"
     )
