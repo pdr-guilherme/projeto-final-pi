@@ -5,10 +5,11 @@ from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
+from core.utils import caminho_avatar, caminho_capa, caminho_foto
+
 
 # TODO:
 # - trocar pais por django-countries (5)
-# - adicionar foto (5)
 class Artista(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
     pais = models.CharField(_("país"), max_length=100)
@@ -19,6 +20,7 @@ class Artista(models.Model):
         validators=[MinValueValidator(1800)],
     )
     bio = models.TextField(_("biografia"), blank=True)
+    foto = models.ImageField(_("foto"), upload_to=caminho_foto, blank=True)
 
     class Meta:
         verbose_name = _("artista")
@@ -70,7 +72,6 @@ class Genero(models.Model):
 # - se quiser suportar coletâneas, mover artistas pra Faixa em vez do Lancamento (4)
 # - mesmo álbum em vinil e CD vira dois Lancamento com faixas duplicadas;
 #   separar "obra" de "versão" (como o Discogs) é a solução (5)
-# - adicionar imagem de capa (5)
 class Lancamento(models.Model):
     class Formato(models.TextChoices):
         VINIL = "vinil", _("Vinil")
@@ -81,6 +82,7 @@ class Lancamento(models.Model):
         OUTRO = "outro", _("Outro")
 
     titulo = models.CharField(_("título"), max_length=255)
+    capa = models.ImageField(_("capa"), upload_to=caminho_capa, blank=True)
     formato = models.CharField(_("formato"), max_length=20, choices=Formato.choices)
     data_lancamento = models.DateField(_("data de lançamento"))
     gravadora = models.ForeignKey(
@@ -147,7 +149,6 @@ class Faixa(models.Model):
 #   signal post_save), senão request.user.perfil levanta RelatedObjectDoesNotExist (3)
 #   - https://docs.djangoproject.com/en/6.1/ref/signals/
 # - trocar pais por django-countries (5)
-# - adicionar avatar (5)
 class PerfilUsuario(models.Model):
     usuario = models.OneToOneField(
         settings.AUTH_USER_MODEL,
@@ -157,6 +158,7 @@ class PerfilUsuario(models.Model):
     )
     bio = models.TextField(_("biografia"), blank=True)
     pais = models.CharField(_("país"), max_length=100, blank=True)
+    avatar = models.ImageField(_("capa"), upload_to=caminho_avatar, blank=True)
 
     class Meta:
         verbose_name = _("perfil de usuário")
