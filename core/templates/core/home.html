@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}Minha Coleção | Wax&Tracks{% endblock %}
+
+{% block content %}
+    <h1 class="page-title">Sua Estante Musical</h1>
+    
+    <!-- Filtro Expansível -->
+    <details class="filter-dropdown">
+        <summary class="filter-btn">
+            <span>⚙️ Filtrar por Gênero e Formato</span>
+        </summary>
+        
+        <div class="filter-panel">
+            <div class="filter-group-inline">
+                <h4>Gêneros</h4>
+                <div class="options-row">
+                    <label class="filter-option"><input type="checkbox" name="genero" value="rock"> Rock</label>
+                    <label class="filter-option"><input type="checkbox" name="genero" value="mpb"> MPB</label>
+                    <label class="filter-option"><input type="checkbox" name="genero" value="pop"> Pop Latino</label>
+                    <label class="filter-option"><input type="checkbox" name="genero" value="jazz"> Jazz</label>
+                </div>
+            </div>
+
+            <div class="filter-group-inline">
+                <h4>Formato</h4>
+                <div class="options-row">
+                    <label class="filter-option"><input type="checkbox" name="tipo" value="album"> Álbum</label>
+                    <label class="filter-option"><input type="checkbox" name="tipo" value="ep"> EP</label>
+                </div>
+            </div>
+        </div>
+    </details>
+
+    <!-- Grid de Discos (Ocupando a largura total) -->
+    <div class="album-grid">
+        <a href="{% url 'detalhe_lancamento' %}" style="text-decoration: none; color: inherit;">
+            <div class="album-card">
+                <div class="album-cover"></div>
+                <h2 class="album-title">Falso Brilhante</h2>
+                <p class="album-artist">Elis Regina</p>
+            </div>
+        </a>
+
+        <a href="{% url 'detalhe_lancamento' %}" style="text-decoration: none; color: inherit;">
+            <div class="album-card">
+                <div class="album-cover"></div>
+                <h2 class="album-title">Amor a la Mexicana</h2>
+                <p class="album-artist">Thalía</p>
+            </div>
+        </a>
+    </div>
+{% endblock %}

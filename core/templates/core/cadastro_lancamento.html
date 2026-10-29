@@ -1,0 +1,99 @@
+{% extends 'base.html' %}
+
+{% block title %}Novo Lançamento | Wax&Tracks{% endblock %}
+
+{% block content %}
+    <h1 class="page-title" style="text-align: center;">Cadastrar Disco</h1>
+    
+    <div class="form-container">
+        <form action="#" method="POST">
+            <!-- Título principal -->
+            <div class="form-group">
+                <label for="titulo">Título do Lançamento</label>
+                <input type="text" id="titulo" name="titulo" placeholder="Ex: Falso Brilhante">
+            </div>
+
+            <!-- Tipo e Data -->
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div class="form-group">
+                    <label for="tipo">Tipo</label>
+                    <select id="tipo" name="tipo">
+                        <option value="">Selecione...</option>
+                        <option>Álbum</option>
+                        <option>EP</option>
+                        <option>Single</option>
+                        <option>Coletânea</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="data_lancamento">Data de Lançamento</label>
+                    <input type="date" id="data_lancamento" name="data_lancamento">
+                </div>
+            </div>
+
+            <!-- Gravadora -->
+            <div class="form-group">
+                <label for="gravadora">Gravadora</label>
+                <select id="gravadora" name="gravadora">
+                    <option value="">Selecione uma gravadora...</option>
+                    <option value="1">Philips Records</option>
+                    <option value="2">Fonovisa</option>
+                    <option value="3">Som Livre</option>
+                </select>
+                <small style="color: var(--text-muted); margin-top: 0.3rem;">Não encontrou? Cadastre em Cadastros Básicos.</small>
+            </div>
+
+            <!-- Artista -->
+            <div class="form-group">
+                <label for="artistas">Artista</label>
+                <select id="artistas" name="artistas">
+                    <option value="">Selecione um artista...</option>
+                    <option value="1">Elis Regina</option>
+                    <option value="2">Thalía</option>
+                    <option value="3">Belchior</option>
+                    <option value="4">Tom Jobim</option>
+                </select>
+                <small style="color: var(--text-muted); margin-top: 0.3rem;">Não encontrou? Cadastre em Cadastros Básicos.</small>
+            </div>
+
+            <!-- Gênero Musical -->
+            <div class="form-group">
+                <label for="generos">Gênero Musical</label>
+                <select id="generos" name="generos">
+                    <option value="">Selecione um gênero...</option>
+                    <option value="1">MPB</option>
+                    <option value="2">Rock</option>
+                    <option value="3">Pop Latino</option>
+                    <option value="4">Bossa Nova</option>
+                    <option value="5">Samba</option>
+                </select>
+                <small style="color: var(--text-muted); margin-top: 0.3rem;">Não encontrou? Cadastre em Cadastros Básicos.</small>
+            </div>
+
+            <!-- Capa do Disco -->
+            <div class="form-group">
+                <label for="capa">Imagem da Capa</label>
+                <input type="file" id="capa" name="capa" style="background: none; padding: 0.2rem 0;">
+            </div>
+
+            <!-- Simulação do Cadastro das Faixas -->
+            <hr style="border: 0; border-top: 1px solid var(--border-color); margin: 2rem 0;">
+            <h3 style="margin-bottom: 1rem; font-family: 'Inter'; font-size: 1.1rem; color: var(--text-main);">Faixas do Disco</h3>
+            
+            <div style="display: grid; grid-template-columns: 50px 1fr 100px; gap: 0.5rem; margin-bottom: 0.5rem;">
+                <input type="number" placeholder="Nº" value="1" readonly style="text-align: center;">
+                <input type="text" placeholder="Título da faixa (Ex: Como Nossos Pais)">
+                <input type="text" placeholder="Duração">
+            </div>
+            
+            <div style="display: grid; grid-template-columns: 50px 1fr 100px; gap: 0.5rem; margin-bottom: 1rem;">
+                <input type="number" placeholder="Nº" value="2" readonly style="text-align: center;">
+                <input type="text" placeholder="Título da faixa (Ex: Velha Roupa Colorida)">
+                <input type="text" placeholder="Duração">
+            </div>
+
+            <button type="button" class="btn-primary" style="margin-top: 1rem;">Salvar Lançamento</button>
+        </form>
+    </div>
+{% endblock %}

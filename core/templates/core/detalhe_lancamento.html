@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% block title %}Detalhes do Lançamento | Wax&Tracks{% endblock %}
+
+{% block content %}
+    <div class="detail-header">
+        <div class="detail-cover"></div>
+        <div class="detail-info">
+            <h1>Falso Brilhante</h1>
+            <h2>Elis Regina • 1976 • Philips</h2>
+            
+            <div style="margin-bottom: 1.5rem;">
+                <span class="tag">MPB</span>
+                <span class="tag">Álbum</span>
+            </div>
+            
+            <p>Um dos álbuns mais aclamados da música brasileira, gravado em estúdio e originado do espetáculo homônimo.</p>
+        </div>
+    </div>
+
+    <h2 style="margin-bottom: 1rem;">Faixas</h2>
+    <table class="table-list">
+        <tr>
+            <th style="width: 50px;">#</th>
+            <th>Título da Faixa</th>
+            <th style="text-align: right;">Duração</th>
+        </tr>
+        <tr>
+            <td>1</td>
+            <td>Como Nossos Pais</td>
+            <td style="text-align: right;">3:23</td>
+        </tr>
+        <tr>
+            <td>2</td>
+            <td>Velha Roupa Colorida</td>
+            <td style="text-align: right;">4:48</td>
+        </tr>
+    </table>
+
+    <h2 style="margin-top: 3rem; margin-bottom: 1rem;">Minha Avaliação</h2>
+    <div class="review-card">
+        <p><strong>Nota: 5/5</strong></p>
+        <p>Um disco indispensável na coleção. A voz da Elis está impecável e os arranjos são históricos.</p>
+        <small style="color: #777;">Avaliado em 25/10/2026</small>
+    </div>
+{% endblock %}

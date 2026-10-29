@@ -1,0 +1,334 @@
+/* Importando fontes do Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Inter:wght@300;400;600&display=swap');
+
+:root {
+    --bg-color: #FDFBF7; /* Creme/Off-white */
+    --text-main: #3E3834; /* Marrom bem escuro/Preto suave */
+    --accent-color: #C15C3D; /* Terracota */
+    --accent-hover: #A3482C;
+    --card-bg: #FFFFFF;
+    --border-color: #E2DDD5;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: var(--bg-color);
+    color: var(--text-main);
+    font-family: 'Inter', sans-serif;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Tipografia Serifada para Títulos */
+h1, h2, h3, .logo {
+    font-family: 'Playfair Display', serif;
+}
+
+/* Header */
+header {
+    background-color: var(--card-bg);
+    border-bottom: 1px solid var(--border-color);
+    padding: 1.5rem 5%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo {
+    font-size: 1.8rem;
+    color: var(--accent-color);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--text-main);
+    margin-left: 1.5rem;
+    font-weight: 600;
+    transition: color 0.3s;
+}
+
+nav a:hover {
+    color: var(--accent-color);
+}
+
+/* Container Principal */
+main {
+    flex: 1;
+    padding: 3rem 5%;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+}
+
+.page-title {
+    margin-bottom: 2rem;
+    font-size: 2.2rem;
+    color: var(--text-main);
+}
+
+/* Grid de Discos (Home) */
+.album-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 2rem;
+}
+
+.album-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1rem;
+    text-align: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    transition: transform 0.3s;
+}
+
+.album-card:hover {
+    transform: translateY(-5px);
+}
+
+.album-cover {
+    width: 100%;
+    aspect-ratio: 1/1;
+    background-color: #E2DDD5;
+    border-radius: 4px;
+    margin-bottom: 1rem;
+}
+
+.album-title {
+    font-size: 1.1rem;
+    margin-bottom: 0.5rem;
+}
+
+.album-artist {
+    font-size: 0.9rem;
+    color: #777;
+}
+
+/* Formulários */
+.form-container {
+    background: var(--card-bg);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+    display: flex;
+    flex-direction: column;
+}
+
+label {
+    margin-bottom: 0.5rem;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+input, select {
+    padding: 0.8rem;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: 'Inter', sans-serif;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--accent-color);
+}
+
+.btn-primary {
+    background-color: var(--accent-color);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 4px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.3s;
+    width: 100%;
+    font-family: 'Inter', sans-serif;
+}
+
+.btn-primary:hover {
+    background-color: var(--accent-hover);
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    padding: 2rem;
+    border-top: 1px solid var(--border-color);
+    font-size: 0.9rem;
+    color: #777;
+    margin-top: 3rem;
+}
+
+/* --- Estrutura da Home com Filtros --- */
+.home-layout {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+}
+
+.filters-sidebar {
+    min-width: 250px;
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    position: sticky;
+    top: 2rem;
+}
+
+.filter-group h3 {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border-color);
+    padding-bottom: 0.5rem;
+}
+
+.filter-option {
+    display: flex;
+    align-items: center;
+    margin-bottom: 0.8rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.filter-option input[type="checkbox"] {
+    margin-right: 10px;
+    accent-color: var(--accent-color);
+    width: 16px;
+    height: 16px;
+}
+
+/* --- Telas de Detalhes (Lançamento e Artista) --- */
+.detail-header {
+    display: flex;
+    gap: 3rem;
+    background: var(--card-bg);
+    padding: 2rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 3rem;
+}
+
+.detail-cover {
+    width: 250px;
+    height: 250px;
+    background-color: var(--border-color);
+    border-radius: 4px;
+    flex-shrink: 0;
+}
+
+.detail-info h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+}
+
+.detail-info h2 {
+    font-family: 'Inter', sans-serif;
+    color: #777;
+    font-weight: 400;
+    font-size: 1.2rem;
+    margin-bottom: 1.5rem;
+}
+
+.tag {
+    background-color: var(--border-color);
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    margin-right: 0.5rem;
+}
+
+/* --- Listas (Faixas e Avaliações) --- */
+.table-list {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+}
+
+.table-list th, .table-list td {
+    text-align: left;
+    padding: 1rem;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.review-card {
+    background: var(--card-bg);
+    padding: 1.5rem;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    margin-bottom: 1rem;
+}
+
+/* --- Grid de Cadastros Auxiliares --- */
+.aux-forms-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+}
+
+/* --- Filtro Expansível (Dropdown) --- */
+.filter-dropdown {
+    margin-bottom: 2rem;
+}
+
+.filter-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: var(--card-bg);
+    border: 1px solid var(--border-color);
+    padding: 0.7rem 1.2rem;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    user-select: none;
+    transition: all 0.2s ease;
+    width: fit-content;
+}
+
+.filter-btn:hover {
+    border-color: var(--accent-color);
+    color: var(--accent-color);
+}
+
+.filter-panel {
+    margin-top: 0.8rem;
+    background: var(--card-bg);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+}
+
+.filter-group-inline h4 {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    color: #777;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.options-row {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+}
