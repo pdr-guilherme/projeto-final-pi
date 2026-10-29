@@ -47,10 +47,8 @@ class Gravadora(models.Model):
         return self.nome
 
 
-# TODO:
-# - nome com unique=True (hoje dá pra cadastrar dois "Pós-punk") (2)
 class Genero(models.Model):
-    nome = models.CharField(_("nome"), max_length=255)
+    nome = models.CharField(_("nome"), max_length=255, unique=True)
 
     class Meta:
         verbose_name = _("gênero")
