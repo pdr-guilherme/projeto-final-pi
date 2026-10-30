@@ -61,14 +61,6 @@ class Genero(models.Model):
         return self.nome
 
 
-# TODO:
-#   atualizar admin, filtros e script de popular junto (1)
-# - decidir se o acervo é de cada usuário; se for, criar model ItemAcervo
-#   (usuario, lancamento, adquirido_em, observacoes) com UniqueConstraint
-#   em (usuario, lancamento) (2)
-# - se quiser suportar coletâneas, mover artistas pra Faixa em vez do Lancamento (4)
-# - mesmo álbum em vinil e CD vira dois Lancamento com faixas duplicadas;
-#   separar "obra" de "versão" (como o Discogs) é a solução (5)
 class Lancamento(models.Model):
     class Formato(models.TextChoices):
         VINIL = "vinil", _("Vinil")
