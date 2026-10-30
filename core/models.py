@@ -4,15 +4,14 @@ from django.conf import settings
 from django.core.validators import MinValueValidator
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from django_countries.fields import CountryField
 
 from core.utils import caminho_avatar, caminho_capa, caminho_foto
 
 
-# TODO:
-# - trocar pais por django-countries (5)
 class Artista(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
-    pais = models.CharField(_("país"), max_length=100)
+    pais = CountryField()
     ano_formacao = models.PositiveSmallIntegerField(
         _("ano de formação"),
         null=True,
@@ -31,11 +30,9 @@ class Artista(models.Model):
         return self.nome
 
 
-# TODO:
-# - trocar pais por django-countries (5)
 class Gravadora(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
-    pais = models.CharField(_("país"), max_length=100)
+    pais = CountryField()
     ano_formacao = models.PositiveSmallIntegerField(
         _("ano de formação"),
         null=True,
@@ -143,8 +140,6 @@ class Faixa(models.Model):
         return self.titulo
 
 
-# TODO:
-# - trocar pais por django-countries (5)
 class PerfilUsuario(models.Model):
     usuario = models.OneToOneField(
         settings.AUTH_USER_MODEL,
@@ -153,7 +148,7 @@ class PerfilUsuario(models.Model):
         related_name="perfil",
     )
     bio = models.TextField(_("biografia"), blank=True)
-    pais = models.CharField(_("país"), max_length=100, blank=True)
+    pais = CountryField()
     avatar = models.ImageField(_("capa"), upload_to=caminho_avatar, blank=True)
 
     class Meta:
