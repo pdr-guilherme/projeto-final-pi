@@ -11,7 +11,7 @@ from core.utils import caminho_avatar, caminho_capa, caminho_foto
 
 class Artista(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
-    pais = CountryField()
+    pais = CountryField(_("país"))
     ano_formacao = models.PositiveSmallIntegerField(
         _("ano de formação"),
         null=True,
@@ -32,7 +32,7 @@ class Artista(models.Model):
 
 class Gravadora(models.Model):
     nome = models.CharField(_("nome"), max_length=255)
-    pais = CountryField()
+    pais = CountryField(_("país"))
     ano_formacao = models.PositiveSmallIntegerField(
         _("ano de formação"),
         null=True,
@@ -140,8 +140,8 @@ class PerfilUsuario(models.Model):
         related_name="perfil",
     )
     bio = models.TextField(_("biografia"), blank=True)
-    pais = CountryField()
-    avatar = models.ImageField(_("capa"), upload_to=caminho_avatar, blank=True)
+    pais = CountryField(_("país"))
+    avatar = models.ImageField(_("avatar"), upload_to=caminho_avatar, blank=True)
 
     class Meta:
         verbose_name = _("perfil de usuário")
