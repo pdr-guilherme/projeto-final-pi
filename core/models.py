@@ -143,11 +143,7 @@ class Faixa(models.Model):
         return self.titulo
 
 
-# PerfilUsuario
 # TODO:
-# - criar o perfil automaticamente no cadastro do usuário (na view ou via
-#   signal post_save), senão request.user.perfil levanta RelatedObjectDoesNotExist (3)
-#   - https://docs.djangoproject.com/en/6.1/ref/signals/
 # - trocar pais por django-countries (5)
 class PerfilUsuario(models.Model):
     usuario = models.OneToOneField(
